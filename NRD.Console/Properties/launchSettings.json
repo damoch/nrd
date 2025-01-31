@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NRD.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\HP\\Documents\\nrd\\testData\\Castlevania.nes"
+    }
+  }
+}

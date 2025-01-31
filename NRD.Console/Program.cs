@@ -18,8 +18,8 @@
 
             Console.WriteLine($"Is iNES Format: {romFile.Header.IsInesFormat}");
             Console.WriteLine($"Is NES 2.0 Format: {romFile.Header.IsNes20Format}");
-
-            Console.WriteLine($"PRG ROM Size: {romFile.Header.PGPRomSize} x 16 KiB = {romFile.Header.PGPRomSize * 16}");
+            Console.WriteLine($"TV System: {romFile.Header.TVSystem}");
+            Console.WriteLine($"PRG ROM Size: {romFile.Header.PGPRomSize} x 16 KiB = {romFile.Header.PGPRomSize * 16} KiB");
 
             if (romFile.Header.UsesChrRam)
             {
@@ -27,7 +27,7 @@
             }
             else
             {
-                Console.WriteLine($"CHR ROM Size: {romFile.Header.CHRRomSize} x 8 KiB = {romFile.Header.CHRRomSize * 8}");
+                Console.WriteLine($"CHR ROM Size: {romFile.Header.CHRRomSize} x 8 KiB = {romFile.Header.CHRRomSize * 8} KiB");
             }
 
             Console.ReadKey();

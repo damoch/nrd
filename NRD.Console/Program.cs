@@ -2,6 +2,7 @@
 {
     using NRD.Console.Implementations.NES;
     using System;
+    using System.Drawing;
     internal class Program
     {
         static void Main(string[] args)
@@ -28,6 +29,29 @@
             else
             {
                 Console.WriteLine($"CHR ROM Size: {romFile.Header.CHRRomSize} x 8 KiB = {romFile.Header.CHRRomSize * 8} KiB");
+            }
+
+            var imageConverter = new NesImageConverter();
+
+            for (int i = 0; i < romFile.ImagesCount; i++)
+            {
+                var imageData = romFile.GetImageData(i);
+                var bitmap = imageConverter.ConvertToBitmap(imageData);
+                using (var bitmapImage = new Bitmap(8, 8))
+                {
+                    for (var y = 0; y < 8; y++)
+                    {
+                        for (var x = 0; x < 8; x++)
+                        {
+                            var color = Color.FromArgb(bitmap[x][y]);
+                            color = Color.FromArgb(color.R, color.G, color.B);
+                            bitmapImage.SetPixel(x, y, color);
+                        }
+                    }
+                    bitmapImage.Save($"sprite_{i}.png");
+                }
+
+
             }
 
             Console.ReadKey();
